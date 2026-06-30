@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "daisyui";
+section:not(#hero) {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 75%;
+}
+.flex {
+  row-gap: 30px;
+}

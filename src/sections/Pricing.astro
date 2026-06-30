@@ -1,0 +1,48 @@
+---
+import Icon from "@/components/Icon.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+import type { PricingData } from "@/config/landing.interface";
+
+interface Props {
+  data: PricingData;
+}
+
+const { data } = Astro.props;
+---
+
+<section id="pricing">
+  <SectionTitle>
+    {data.title}
+  </SectionTitle>
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4">
+    {
+      data.tiers.map((tier) => (
+        <div class="card card-border shadow-sm">
+          <div class="card-body">
+            <h2 class="text-3xl text-bold">{tier.title}</h2>
+            <p class="text-xl text-center">{tier.description}</p>
+            <h4 class="text-6xl font-semibold">
+              {tier.price.amount}
+              {tier.price.period && (
+                <span class="font-normal text-xl opacity-85">
+                  {tier.price.period}
+                </span>
+              )}
+            </h4>
+            <ul class="mt-6 flex flex-col gap-2 text-sm">
+              {tier.features.map((feature) => (
+                <li class="flex flex-row px-7 gap-x-1">
+                  <span>
+                    <Icon class="w-6 h-auto text-primary" icon="CheckIcon" />
+                  </span>
+                  <p class="text-center">{feature}</p>
+                </li>
+              ))}
+            </ul>
+            <button class="mt-6 btn btn-primary btn-block">Contact Us</button>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

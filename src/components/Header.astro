@@ -1,0 +1,57 @@
+---
+import type { HeaderData } from "@/config/landing.interface";
+
+interface Props {
+  data: HeaderData;
+}
+
+const { data } = Astro.props;
+---
+
+<header id="navbar" class="">
+  <div class="navbar bg-white" aria-label="Main Navigation">
+    <div class="navbar-start text-nowrap mx-">
+      <a class="btn btn-ghost text-xl" href="#">{data.logo}</a>
+    </div>
+    <div class="navbar-end overflow-visible">
+      <div class="dropdown dropdown-end lg:hidden">
+        <div tabindex="0" role="button" class="btn btn-primary lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h8m-8 6h16"></path>
+          </svg>
+        </div>
+        <ul class="menu menu-md dropdown-content" tabindex="-1">
+          {
+            data.links.map((item) => (
+              <li class="text-lg hover:scale-110 hover:opacity-80 text-primary">
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+        <span></span>
+      </div>
+      <div class="hidden lg:flex">
+        <ul tabindex="-1" class="menu menu-horizontal px-1">
+          {
+            data.links.map((item) => (
+              <li class="text-lg hover:scale-110 hover:opacity-80">
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

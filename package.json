@@ -1,0 +1,38 @@
+{
+  "name": "astro-single-page",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint --ext .astro,.ts,.js,.tsx ."
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.5",
+    "@astrojs/sitemap": "^3.1.1",
+    "@fontsource-variable/rubik": "^5.0.21",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^4.4.4",
+    "astro-robots-txt": "^1.0.0",
+    "daisyui": "^5.6.3",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-astro": "^0.31.4",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "tailwind-scrollbar": "^3.1.0"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true,
+    "sharp@0.33.5": true
+  }
+}

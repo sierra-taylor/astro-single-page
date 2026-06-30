@@ -1,0 +1,96 @@
+---
+import Icon from "@/components/Icon.astro";
+import type {
+  BusinessData,
+  FooterData,
+  Icon as IconType,
+} from "@/config/landing.interface";
+
+interface Props {
+  footerData: FooterData;
+  businessData: BusinessData;
+}
+
+const { footerData, businessData } = Astro.props;
+---
+
+<footer class="footer sm:footer-horizontal bg-neutral text-white p-10">
+  <aside>
+    <a type="text" class="text-xl md:text-2xl" href="/">
+      {footerData.logo}
+    </a>
+    <p class="md:text-lg">
+      {footerData.description}
+      <br />
+      Copyright &copy; {new Date().getFullYear()} - All rights reserved.
+    </p>
+  </aside>
+  <div>
+    <div>
+      <h3 class="font-heading text-lg font-semibold text-text">Call Us</h3>
+      <a
+        href={`tel:${businessData.phone}`}
+        class="mt-1 block text-primary-light font-medium transition-colors hover:text-primary"
+      >
+        {businessData.phoneNumFormatted}
+      </a>
+    </div>
+
+    <div>
+      <h3 class="font-heading text-lg font-semibold text-text">Email Us</h3>
+      <a
+        href={`mailto:${businessData.email}`}
+        class="mt-1 block text-primary-light font-medium transition-colors hover:text-primary"
+      >
+        {businessData.email}
+      </a>
+    </div>
+
+    <div>
+      <h3 class="font-heading text-lg font-semibold text-text">Visit Us</h3>
+      <a
+        href={businessData.address.mapLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-1 block text-text-muted transition-colors hover:text-text"
+      >
+        {businessData.address.lineOne}<br />
+        {
+          businessData.address.lineTwo && (
+            <>
+              {businessData.address.lineTwo}
+              <br />
+            </>
+          )
+        }
+        {businessData.address.city}, {businessData.address.state}
+        {businessData.address.zip}
+      </a>
+    </div>
+
+    <div>
+      <h3 class="font-heading text-lg font-semibold text-text">Hours</h3>
+      <p class="mt-1 text-text-muted">
+        Mon - Fri: 7:00 AM - 6:00 PM<br />
+        Sat: 8:00 AM - 2:00 PM<br />
+        Sun: Closed<br />
+        <span class="font-medium text-accent"
+          >24/7 Emergency Service Available</span
+        >
+      </p>
+    </div>
+  </div>
+
+  <nav>
+    <h6 class="footer-title">Social</h6>
+    <div class="grid grid-flow-col gap-4">
+      {
+        footerData.socials.map((social) => (
+          <a type="icon" href={social.href} title={social.icon}>
+            <Icon icon={social.icon as IconType} />
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</footer>
