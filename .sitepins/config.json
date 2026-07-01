@@ -1,0 +1,10 @@
+{
+  "content": "content",
+  "media": "src/assets/images",
+  "public": "public",
+  "configs": [
+    "src/config"
+  ],
+  "custom-commit": false,
+  "arrangement": []
+}
